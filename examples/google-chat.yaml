@@ -1,0 +1,16 @@
+version: 0.1
+type: chat
+vendor: google
+model: chat-bison
+context: Assume you're a smart teacher, you'll explain things in a way that is easy to understand.
+messages:
+  - input: Why 1+1=2?
+parameters:
+  - name: temperature
+    value: 0.2
+  - name: max_output_tokens
+    value: 256
+  - name: top_p
+    value: 0.8
+  - name: top_k
+    value: 40

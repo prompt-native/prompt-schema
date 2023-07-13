@@ -1,0 +1,10 @@
+version: 0.1
+type: chat
+vendor: openai
+model: gpt-3.5-turbo
+context: Assume you're a smart teacher, you'll explain things in a way that is easy to understand.
+messages:
+  - input: Why 1+1=2?
+parameters:
+  - name: temperature
+    value: 0.2

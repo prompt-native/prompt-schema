@@ -1,0 +1,14 @@
+version: 0.1
+type: completion
+vendor: google
+model: text-bison
+prompt: It's really a nice
+parameters:
+  - name: temperature
+    value: 0.2
+  - name: max_output_tokens
+    value: 256
+  - name: top_p
+    value: 0.8
+  - name: top_k
+    value: 40

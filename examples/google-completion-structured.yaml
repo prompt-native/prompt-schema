@@ -1,0 +1,22 @@
+version: 0.1
+type: completion
+vendor: google
+model: text-bison
+prompt: You are going to show the structure of a word, use the format in examples.
+examples:
+  - field: input
+    values:
+      - hello
+    test: foobar
+  - field: output
+    values:
+      - H-E-L-L-O,hello
+parameters:
+  - name: temperature
+    value: 0.2
+  - name: max_output_tokens
+    value: 256
+  - name: top_p
+    value: 0.8
+  - name: top_k
+    value: 40
