@@ -24,3 +24,12 @@ which is easy and also readable.
 The limitation here is that yaml does not provide a native way for schema validating (like jsonschema, or XML DTD).
 
 See [v0.1](/schema/v0.1.md) for more details about the schema.
+
+# Libraries
+
+There're libraries to parse and use prompts defined in this format:
+
+- [Rust](https://github.com/prompt-native/prompt-lib-rust)
+- [Java](https://github.com/prompt-native/prompt-lib-java)
+- [Python](https://github.com/prompt-native/prompt-lib-python)
+- [Typescript](https://github.com/prompt-native/prompt-lib-ts)
