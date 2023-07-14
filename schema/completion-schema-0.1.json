@@ -6,6 +6,10 @@
     "$schema": {
       "type": "string"
     },
+    "version": {
+      "type": "string",
+      "description": "The schema version, currently is 0.1"
+    },
     "type": {
       "type": "string",
       "enum": ["completion"],
@@ -31,7 +35,7 @@
       "description": "LLM parameters."
     }
   },
-  "required": ["type", "vendor", "model", "prompt"],
+  "required": ["version", "type", "vendor", "model", "prompt"],
   "definitions": {
     "exampleField": {
       "additionalProperties ": false,

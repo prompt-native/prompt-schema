@@ -6,6 +6,10 @@
     "$schema": {
       "type": "string"
     },
+    "version": {
+      "type": "string",
+      "description": "The schema version, currently is 0.1"
+    },
     "type": {
       "type": "string",
       "enum": ["chat"],
@@ -51,7 +55,7 @@
       "description": "LLM parameters."
     }
   },
-  "required": ["type", "vendor", "model", "question"],
+  "required": ["version", "type", "vendor", "model", "question"],
   "definitions": {
     "message": {
       "properties": {

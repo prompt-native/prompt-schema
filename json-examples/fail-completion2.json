@@ -1,5 +1,6 @@
 {
   "$schema": "../schema/completion-schema-0.1.json",
+  "version": "0.1",
   "type": "completion",
   "vendor": "google",
   "prompt": "I'm hungry and I want to",
