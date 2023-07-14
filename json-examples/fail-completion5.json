@@ -1,0 +1,27 @@
+{
+  "$schema": "../schema/completion-schema-0.1.json",
+  "type": "completion",
+  "vendor": "google",
+  "model": {
+    "name": "text-bison"
+  },
+  "prompt": {
+    "examples": [
+      {
+        "field": "input",
+        "values": ["Hello"]
+      },
+      {
+        "field": "output",
+        "values": ["H-E-L-L-O, hello"]
+      }
+    ]
+  },
+  "parameters": [
+    {
+      "name": "temperature",
+      "value": 0.1,
+      "test": 1
+    }
+  ]
+}

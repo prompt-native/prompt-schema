@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["chat"],
+      "markdownDescription": "Define the prompt type. You can use:\n * `chat`: prompt used to initiate open-ended conversations with LLM\n * `completion`: prompt used to guide users towards specific actions or responses"
+    },
+    "vendor": {
+      "type": "string",
+      "description": "The provider of the model used in this prompt"
+    },
+    "model": {
+      "$ref": "#/definitions/model",
+      "description": "The LLM model, eg. text-bison or gpt-3.5-turbo"
+    },
+    "context": {
+      "type": "string",
+      "description": "Context instructs how the model should respond. For example, “Explain this code,” specifying words the model can or cannot use, topics to focus on or avoid, or response format. Context applies each time you send a request to the model."
+    },
+    "question": {
+      "type": "string",
+      "description": "The question you want to ask LLM"
+    },
+    "examples": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Examples help the model understand what an appropriate model response looks like. You can write your own example input and output or use the Test section to save a real response as an example. You can also add a prefix which will be appended to every example (for instance, “question” and “answer”).",
+      "items": {
+        "$ref": "#/definitions/message"
+      }
+    },
+    "history": {
+      "type": "array",
+      "minItems": 1,
+      "description": "History messages in the conversation",
+      "items": {
+        "$ref": "#/definitions/message"
+      }
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/parameter"
+      },
+      "description": "LLM parameters."
+    }
+  },
+  "required": ["type", "vendor", "model", "question"],
+  "definitions": {
+    "message": {
+      "properties": {
+        "input": {
+          "type": "string",
+          "description": "Input message that asked by user"
+        },
+        "output": {
+          "type": "string",
+          "description": "Output of LLM"
+        }
+      },
+      "required": ["input", "output"]
+    },
+    "parameter": {
+      "additionalProperties ": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z]+(_[a-z]+)*$",
+          "description": "Name of parameter"
+        },
+        "value": {
+          "type": ["string", "number", "boolean"],
+          "description": "Value of this parameter"
+        }
+      },
+      "required": ["name", "value"]
+    },
+    "model": {
+      "additionalProperties ": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of parameter"
+        },
+        "version": {
+          "type": "string",
+          "description": "Additional version information of the model. For example, if you are using text-bison@001, then you can set modelVersion to 001"
+        }
+      },
+      "required": ["name"]
+    }
+  }
+}

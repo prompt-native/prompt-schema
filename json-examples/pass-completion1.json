@@ -1,0 +1,15 @@
+{
+  "$schema": "../schema/completion-schema-0.1.json",
+  "type": "completion",
+  "vendor": "google",
+  "model": {
+    "name": "text-bison"
+  },
+  "prompt": "I'm hungry and I want to",
+  "parameters": [
+    {
+      "name": "temperature",
+      "value": 0.1
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../schema/chat-schema-0.1.json",
+  "type": "chat",
+  "vendor": "google",
+  "model": {
+    "name": "chat-bison"
+  },
+  "context": "You're a smart hero, your",
+  "examples": [
+    {
+      "input": "1+1=？",
+      "output": "2"
+    }
+  ],
+  "history": [
+    {
+      "input": "1+2=？",
+      "output": "3"
+    }
+  ],
+  "question": "Write a hello world in js",
+  "parameters": [
+    {
+      "name": "temperature",
+      "value": 0.1
+    }
+  ]
+}
