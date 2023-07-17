@@ -19,11 +19,21 @@ Our goal is to define a stanard format for prompts, and:
 
 # Schema (0.1 Draft)
 
-The schema is defined in format of [YAML](https://yaml.org/),
-which is easy and also readable.
+The schema is defined in both JSON and [YAML](https://yaml.org/) format.
+
+## YAML
+
+Yaml is recommend if you want to edit prompts manually.
 The limitation here is that yaml does not provide a native way for schema validating (like jsonschema, or XML DTD).
 
 See [v0.1](/schema/v0.1.md) for more details about the schema.
+
+## JSON
+
+This is recommended format when you need to share prompt between systems.
+Ths json schema provides schema validation via [JSON Schema](https://json-schema.org/).
+
+See [completion-0.1](./schema/completion-schema-0.1.json) and [chat-0.1](./schema/chat-schema-0.1.json).
 
 # Libraries
 
