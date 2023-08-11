@@ -25,7 +25,14 @@ Originally YAML was the chosen format for it's readability,
 however there's no schema validator for it,
 and it's now been replaced by JSON.
 
-See [completion-0.1](./schema/completion-schema-0.1.json) and [chat-0.1](./schema/chat-schema-0.1.json).
+For detailed schema, see [completion-0.2](./schema/completion-schema-0.2.json) and [chat-0.2](./schema/chat-schema-0.2.json).
+
+# Validation in Vscode
+
+In vscode, you should able to check your prompt automatically if you set the "$schema" field
+to a right location of the schema.
+
+![](/json-examples/vscode.png)
 
 # Libraries
 

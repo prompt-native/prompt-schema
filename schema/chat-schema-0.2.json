@@ -8,7 +8,7 @@
     },
     "version": {
       "type": "string",
-      "description": "The schema version, currently is 0.1"
+      "description": "The schema version, currently is 0.2"
     },
     "type": {
       "type": "string",

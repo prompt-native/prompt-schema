@@ -1,6 +1,6 @@
 {
-  "$schema": "../schema/completion-schema-0.1.json",
-  "version": "0.1",
+  "$schema": "../schema/completion-schema-0.2.json",
+  "version": "0.2",
   "vendor": "google",
   "model": {
     "name": "text-bison"

@@ -1,6 +1,6 @@
 {
-  "$schema": "../schema/chat-schema-0.1.json",
-  "version": "0.1",
+  "$schema": "../schema/chat-schema-0.2.json",
+  "version": "0.2",
   "type": "chat",
   "vendor": "google",
   "model": {
