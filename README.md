@@ -14,24 +14,16 @@ By executing the standard defination of a prompt, it's possible that the prompt 
 
 Our goal is to define a stanard format for prompts, and:
 
-- It should be easy to parse and read/update
-- It should follow best practices that we use when creating prompts
+- All necessary information of prompts could be saved easily
+- It should be easy to parse and edit
+- Provide best practices that we use when creating prompts
 
-# Schema (0.1 Draft)
+# Schema
 
-The schema is defined in both JSON and [YAML](https://yaml.org/) format.
-
-## YAML
-
-Yaml is recommend if you want to edit prompts manually.
-The limitation here is that yaml does not provide a native way for schema validating (like jsonschema, or XML DTD).
-
-See [v0.1](/schema/v0.1.md) for more details about the schema.
-
-## JSON
-
-This is recommended format when you need to share prompt between systems.
-Ths json schema provides schema validation via [JSON Schema](https://json-schema.org/).
+The schema is defined in [JSON Schema](https://json-schema.org/) format.
+Originally YAML was the chosen format for it's readability,
+however there's no schema validator for it,
+and it's now been replaced by JSON.
 
 See [completion-0.1](./schema/completion-schema-0.1.json) and [chat-0.1](./schema/chat-schema-0.1.json).
 
