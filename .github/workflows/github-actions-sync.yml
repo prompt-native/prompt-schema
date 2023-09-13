@@ -11,5 +11,5 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-      - run: npm i -g ajv
+      - run: npm i -g ajv-cli
       - run: json-examples/run-validation.sh
