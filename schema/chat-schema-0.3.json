@@ -12,7 +12,9 @@
     },
     "type": {
       "type": "string",
-      "enum": ["chat"],
+      "enum": [
+        "chat"
+      ],
       "markdownDescription": "Define the prompt type. You can use:\n * `chat`: prompt used to initiate open-ended conversations with LLM\n * `completion`: prompt used to guide users towards specific actions or responses"
     },
     "vendor": {
@@ -27,10 +29,6 @@
       "type": "string",
       "description": "Context instructs how the model should respond. For example, “Explain this code,” specifying words the model can or cannot use, topics to focus on or avoid, or response format. Context applies each time you send a request to the model."
     },
-    "question": {
-      "type": "string",
-      "description": "The question you want to ask LLM"
-    },
     "examples": {
       "type": "array",
       "minItems": 1,
@@ -39,7 +37,7 @@
         "$ref": "#/definitions/message"
       }
     },
-    "history": {
+    "messages": {
       "type": "array",
       "minItems": 1,
       "description": "History messages in the conversation",
@@ -55,20 +53,66 @@
       "description": "LLM parameters."
     }
   },
-  "required": ["version", "type", "vendor", "model", "question"],
+  "required": [
+    "version",
+    "type",
+    "vendor",
+    "model"
+  ],
   "definitions": {
     "message": {
       "properties": {
-        "input": {
+        "role": {
           "type": "string",
-          "description": "Input message that asked by user"
+          "enum": [
+            "user",
+            "assistant",
+            "function"
+          ],
+          "description": "Role of this message"
         },
-        "output": {
+        "name": {
           "type": "string",
-          "description": "Output of LLM"
+          "description": "The name of this participant"
+        },
+        "content": {
+          "type": "string",
+          "description": "The message content"
+        },
+        "function_call": {
+          "$ref": "#/definitions/functionCall"
         }
       },
-      "required": ["input", "output"]
+      "oneOf": [
+        {
+          "required": [
+            "role",
+            "content"
+          ]
+        },
+        {
+          "required": [
+            "role",
+            "function_call"
+          ]
+        }
+      ]
+    },
+    "functionCall": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Function name"
+        },
+        "arguments": {
+          "type": "string",
+          "description": "Function call arguments(serialized in JSON)"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ]
     },
     "parameter": {
       "additionalProperties ": false,
@@ -79,11 +123,18 @@
           "description": "Name of parameter"
         },
         "value": {
-          "type": ["string", "number", "boolean"],
+          "type": [
+            "string",
+            "number",
+            "boolean"
+          ],
           "description": "Value of this parameter"
         }
       },
-      "required": ["name", "value"]
+      "required": [
+        "name",
+        "value"
+      ]
     },
     "model": {
       "additionalProperties ": false,
@@ -97,7 +148,9 @@
           "description": "Additional version information of the model. For example, if you are using text-bison@001, then you can set modelVersion to 001"
         }
       },
-      "required": ["name"]
+      "required": [
+        "name"
+      ]
     }
   }
 }

@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/chat-schema-0.3.json",
+  "version": "0.2",
+  "type": "chat",
+  "vendor": "google",
+  "model": {
+    "name": "chat-bison"
+  },
+  "context": "Assume that you are a calculator",
+  "examples": [
+    {
+      "role": "user",
+      "content": "1+1"
+    },
+    {
+      "role": "assistant",
+      "content": "=2"
+    }
+  ],
+  "messages": [
+    {
+      "role": "user",
+      "content": "2*4"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "temperature",
+      "value": 0.1
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# prompt-schema
+# Prompt Schema
 
 This is a schema that defines a standard defination of LLM prompts.
 
@@ -25,7 +25,7 @@ Originally YAML was the chosen format for it's readability,
 however there's no schema validator for it,
 and it's now been replaced by JSON.
 
-For detailed schema, see [completion-0.2](./schema/completion-schema-0.2.json) and [chat-0.2](./schema/chat-schema-0.2.json).
+For detailed schema, see [completion-0.2](./schema/completion-schema-0.3.json) and [chat-0.2](./schema/chat-schema-0.3.json).
 
 # Validation in Vscode
 
@@ -34,7 +34,7 @@ to a right location of the schema.
 
 ![](/json-examples/vscode.png)
 
-# Libraries
+# Libraries (WIP)
 
 There're libraries to parse and use prompts defined in this format:
 

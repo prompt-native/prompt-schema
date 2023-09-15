@@ -1,0 +1,33 @@
+{
+  "$schema": "../schema/chat-schema-0.3.json",
+  "version": "0.2",
+  "type": "chat",
+  "vendor": "google",
+  "model": {
+    "name": "chat-bison"
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the weather today in Beijing?"
+    },
+    {
+      "role": "assistant",
+      "function_call": {
+				"name": "get_weather",
+				"arguments": "{\n\"city\": \"Beijing\",\n\"time\": \"today\"\n}"
+			}
+    },
+    {
+			"role": "function",
+			"name": "get_weather",
+			"content": "{\"weather\": \"sunny, 25C\"}"
+		}
+  ],
+  "parameters": [
+    {
+      "name": "temperature",
+      "value": 0.1
+    }
+  ]
+}

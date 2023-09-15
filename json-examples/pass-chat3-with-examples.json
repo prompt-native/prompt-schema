@@ -1,25 +1,27 @@
 {
-  "$schema": "../schema/chat-schema-0.2.json",
+  "$schema": "../schema/chat-schema-0.3.json",
   "version": "0.2",
   "type": "chat",
   "vendor": "google",
   "model": {
     "name": "chat-bison"
   },
-  "context": "You're a smart hero, your",
   "examples": [
     {
-      "input": "1+1=？",
-      "output": "2"
-    }
-  ],
-  "history": [
+      "role": "user",
+      "content": "1+1"
+    },
     {
-      "input": "1+2=？",
-      "output": "3"
+      "role": "assistant",
+      "content": "=2"
     }
   ],
-  "question": "Write a hello world in js",
+  "messages": [
+    {
+      "role": "user",
+      "content": "2*4"
+    }
+  ],
   "parameters": [
     {
       "name": "temperature",

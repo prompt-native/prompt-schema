@@ -1,5 +1,5 @@
 {
-  "$schema": "../schema/completion-schema-0.2.json",
+  "$schema": "../schema/completion-schema-0.3.json",
   "version": "0.2",
   "type": "completion",
   "vendor": "google",

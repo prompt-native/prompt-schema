@@ -1,0 +1,22 @@
+{
+  "$schema": "../schema/chat-schema-0.3.json",
+  "version": "0.2",
+  "type": "chat",
+  "vendor": "google",
+  "model": {
+    "name": "chat-bison",
+    "version": "002"
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "Write a hello world in js"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "temperature",
+      "value": 0.1
+    }
+  ]
+}

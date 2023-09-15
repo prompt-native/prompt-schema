@@ -24,7 +24,7 @@
       "description": "The LLM model, eg. text-bison or gpt-3.5-turbo"
     },
     "prompt": {
-      "anyOf": [{ "type": "string" }, { "$ref": "#/definitions/structured" }],
+      "type": "string",
       "description": "This field is valid only when type is completion."
     },
     "parameters": {
@@ -37,48 +37,6 @@
   },
   "required": ["version", "type", "vendor", "model", "prompt"],
   "definitions": {
-    "exampleField": {
-      "additionalProperties ": false,
-      "properties": {
-        "field": {
-          "type": "string",
-          "description": "Field name, eg. input."
-        },
-        "values": {
-          "type": "array",
-          "description": "Field example values",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "structured": {
-      "additionalProperties ": false,
-      "properties": {
-        "context": {
-          "type": "string",
-          "description": "Context instructs how the model should respond. For example, “Explain this code,” specifying words the model can or cannot use, topics to focus on or avoid, or response format. Context applies each time you send a request to the model."
-        },
-        "examples": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/definitions/exampleField"
-          },
-          "description": "Examples help the model understand what an appropriate model response looks like. You can write your own example input and output or use the Test section to save a real response as an example. You can also add a prefix which will be appended to every example (for instance, “question” and “answer”)."
-        },
-        "test": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "markdownDescription": "* Input: This is where you make a request to the model. When you submit a request,\nthe context, examples, and input fields are all sent together.\n* Output: This is your model’s response, which takes into account all of the prompt fields (context, examples, input.\nOnly put all values here)"
-        }
-      },
-      "required": ["examples", "test"]
-    },
     "parameter": {
       "additionalProperties ": false,
       "properties": {
