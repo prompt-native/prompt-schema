@@ -18,14 +18,17 @@ Our goal is to define a stanard format for prompts, and:
 - It should be easy to parse and edit
 - Provide best practices that we use when creating prompts
 
-# Schema
+# Schemas
 
 The schema is defined in [JSON Schema](https://json-schema.org/) format.
 Originally YAML was the chosen format for it's readability,
 however there's no schema validator for it,
 and it's now been replaced by JSON.
 
-For detailed schema, see [completion schema](./schema/completion-schema-0.3.json) and [chat schema](./schema/chat-schema-0.3.json).
+For detailed schema, see :
+* [completion schema](./schema/completion-schema-0.4.json) 
+* [chat schema](./schema/chat-schema-0.4.json)
+* [text-to-image schema](./schema/text-to-image-schema-0.1.json)
 
 # Validation in Vscode
 

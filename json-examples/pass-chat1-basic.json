@@ -1,11 +1,7 @@
 {
-  "$schema": "../schema/chat-schema-0.3.json",
+  "$schema": "../schema/chat-schema-0.4.json",
   "version": "0.2",
-  "type": "chat",
-  "vendor": "google",
-  "model": {
-    "name": "chat-bison"
-  },
+  "engine": "chat-bison",
   "messages": [
     {
       "role": "user",

@@ -1,8 +1,7 @@
 {
-  "$schema": "../schema/completion-schema-0.3.json",
+  "$schema": "../schema/completion-schema-0.4.json",
   "version": "0.2",
   "engine": "text-bison",
-  "prompt": "I'm hungry and I want to",
   "parameters": [
     {
       "name": "temperature",

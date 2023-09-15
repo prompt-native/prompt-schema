@@ -1,10 +1,6 @@
 {
   "version": "0.2",
-  "type": "chat",
-  "vendor": "google",
-  "model": {
-    "name": "chat-bison"
-  },
+  "engine": "chat-bison",
   "messages": [
     {
       "role": "user",

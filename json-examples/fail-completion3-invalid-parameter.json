@@ -1,0 +1,11 @@
+{
+  "$schema": "../schema/completion-schema-0.4.json",
+  "version": "0.2",
+  "engine": "text-bison",
+  "prmpot": "hello",
+  "parameters": [
+    {
+      "name": "temperature"
+    }
+  ]
+}

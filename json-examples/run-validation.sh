@@ -23,6 +23,10 @@ for file in pass-completion*.json; do
 runTest 'completion' $file 'pass'
 done
 
+for file in pass-image*.json; do 
+runTest 'text-to-image' $file 'pass'
+done
+
 for file in fail-completion*.json; do 
 runTest 'completion' $file 'fail'
 done

@@ -1,0 +1,15 @@
+{
+  "$schema": "../schema/text-to-image-schema-0.1.json",
+  "version": "0.2",
+  "engine": "stable_diffusion",
+  "prompt": "A girl walking",
+  "width": 512,
+  "height": 512,
+  "count": 3,
+  "parameters": [
+    {
+      "name": "temperature",
+      "value": 0.1
+    }
+  ]
+}

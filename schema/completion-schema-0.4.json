@@ -8,20 +8,18 @@
     },
     "version": {
       "type": "string",
-      "description": "The schema version, currently is 0.1"
+      "description": "The schema version"
     },
     "type": {
       "type": "string",
-      "enum": ["completion"],
+      "enum": [
+        "completion"
+      ],
       "markdownDescription": "Define the prompt type. You can use:\n * `chat`: prompt used to initiate open-ended conversations with LLM\n * `completion`: prompt used to guide users towards specific actions or responses"
     },
-    "vendor": {
+    "engine": {
       "type": "string",
-      "description": "The provider of the model used in this prompt"
-    },
-    "model": {
-      "$ref": "#/definitions/model",
-      "description": "The LLM model, eg. text-bison or gpt-3.5-turbo"
+      "description": "Model engine that is expected to use"
     },
     "prompt": {
       "type": "string",
@@ -35,7 +33,11 @@
       "description": "LLM parameters."
     }
   },
-  "required": ["version", "type", "vendor", "model", "prompt"],
+  "required": [
+    "version",
+    "engine",
+    "prompt"
+  ],
   "definitions": {
     "parameter": {
       "additionalProperties ": false,
@@ -46,25 +48,18 @@
           "description": "Name of parameter"
         },
         "value": {
-          "type": ["string", "number", "boolean"],
+          "type": [
+            "string",
+            "number",
+            "boolean"
+          ],
           "description": "Value of this parameter"
         }
       },
-      "required": ["name", "value"]
-    },
-    "model": {
-      "additionalProperties ": false,
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "Name of parameter"
-        },
-        "version": {
-          "type": "string",
-          "description": "Additional version information of the model. For example, if you are using text-bison@001, then you can set modelVersion to 001"
-        }
-      },
-      "required": ["name"]
+      "required": [
+        "name",
+        "value"
+      ]
     }
   }
 }

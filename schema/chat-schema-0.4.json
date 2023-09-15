@@ -8,22 +8,11 @@
     },
     "version": {
       "type": "string",
-      "description": "The schema version, currently is 0.2"
+      "description": "The schema version"
     },
-    "type": {
+    "engine": {
       "type": "string",
-      "enum": [
-        "chat"
-      ],
-      "markdownDescription": "Define the prompt type. You can use:\n * `chat`: prompt used to initiate open-ended conversations with LLM\n * `completion`: prompt used to guide users towards specific actions or responses"
-    },
-    "vendor": {
-      "type": "string",
-      "description": "The provider of the model used in this prompt"
-    },
-    "model": {
-      "$ref": "#/definitions/model",
-      "description": "The LLM model, eg. text-bison or gpt-3.5-turbo"
+      "description": "Model engine that is expected to use"
     },
     "context": {
       "type": "string",
@@ -55,9 +44,8 @@
   },
   "required": [
     "version",
-    "type",
-    "vendor",
-    "model"
+    "engine",
+    "messages"
   ],
   "definitions": {
     "message": {
@@ -134,22 +122,6 @@
       "required": [
         "name",
         "value"
-      ]
-    },
-    "model": {
-      "additionalProperties ": false,
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "Name of parameter"
-        },
-        "version": {
-          "type": "string",
-          "description": "Additional version information of the model. For example, if you are using text-bison@001, then you can set modelVersion to 001"
-        }
-      },
-      "required": [
-        "name"
       ]
     }
   }
