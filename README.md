@@ -25,7 +25,7 @@ Originally YAML was the chosen format for it's readability,
 however there's no schema validator for it,
 and it's now been replaced by JSON.
 
-For detailed schema, see [completion-0.2](./schema/completion-schema-0.3.json) and [chat-0.2](./schema/chat-schema-0.3.json).
+For detailed schema, see [completion schema](./schema/completion-schema-0.3.json) and [chat schema](./schema/chat-schema-0.3.json).
 
 # Validation in Vscode
 
