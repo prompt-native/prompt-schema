@@ -26,9 +26,9 @@ however there's no schema validator for it,
 and it's now been replaced by JSON.
 
 For detailed schema, see :
-* [completion schema](./schema/completion-schema-0.4.json) 
-* [chat schema](./schema/chat-schema-0.4.json)
-* [text-to-image schema](./schema/text-to-image-schema-0.1.json)
+* [completion schema](./schema/completion-schema.json) 
+* [chat schema](./schema/chat-schema.json)
+* [text-to-image schema](./schema/text-to-image-schema.json)
 
 # Validation in Vscode
 

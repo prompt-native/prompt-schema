@@ -1,5 +1,5 @@
 {
-  "$schema": "../schema/text-to-image-schema-0.1.json",
+  "$schema": "../schema/text-to-image-schema.json",
   "version": "0.2",
   "engine": "stable_diffusion",
   "prompt": "A girl walking",

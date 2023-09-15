@@ -1,5 +1,5 @@
 {
-  "$schema": "../schema/chat-schema-0.4.json",
+  "$schema": "../schema/chat-schema.json",
   "version": "0.2",
   "engine": "chat-bison",
   "examples": [

@@ -1,5 +1,5 @@
 {
-  "$schema": "../schema/completion-schema-0.4.json",
+  "$schema": "../schema/completion-schema.json",
   "version": "0.2",
   "engine": "text-bison",
   "parameters": [

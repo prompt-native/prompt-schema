@@ -2,7 +2,7 @@ runTest() {
     mode=$1
     file=$2
     failOrPass=$3
-    schema="../schema/$mode-schema-*.json"
+    schema="../schema/$mode-schema.json"
 
     echo ">>>>> TEST: should $failOrPass: $file, using schema=$schema"; 
     ajv validate -s $schema -d $file --strict=false
