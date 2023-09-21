@@ -117,7 +117,7 @@
           "type": "string",
           "description": "Function descriptions"
         },
-        "enum": {
+        "enums": {
           "type": "array",
           "description": "Function parameters",
           "items": {

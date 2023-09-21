@@ -28,7 +28,7 @@
         {
           "name": "city",
           "type": "string",
-          "enum": ["Wuhan", "Beijing"],
+          "enums": ["Wuhan", "Beijing"],
           "description": "City name",
           "required": true
         }
