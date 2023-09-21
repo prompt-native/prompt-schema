@@ -34,6 +34,13 @@
         "$ref": "#/definitions/message"
       }
     },
+    "functions": {
+      "type": "array",
+      "description": "Function definitions",
+      "items": {
+        "$ref": "#/definitions/function"
+      }
+    },
     "parameters": {
       "type": "array",
       "items": {
@@ -42,21 +49,13 @@
       "description": "LLM parameters."
     }
   },
-  "required": [
-    "version",
-    "engine",
-    "messages"
-  ],
+  "required": ["version", "engine", "messages"],
   "definitions": {
     "message": {
       "properties": {
         "role": {
           "type": "string",
-          "enum": [
-            "user",
-            "assistant",
-            "function"
-          ],
+          "enum": ["user", "assistant", "function"],
           "description": "Role of this message"
         },
         "name": {
@@ -73,18 +72,60 @@
       },
       "oneOf": [
         {
-          "required": [
-            "role",
-            "content"
-          ]
+          "required": ["role", "content"]
         },
         {
-          "required": [
-            "role",
-            "function_call"
-          ]
+          "required": ["role", "function_call"]
         }
       ]
+    },
+    "function": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Function name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Function descriptions"
+        },
+        "parameters": {
+          "type": "array",
+          "description": "Function parameters",
+          "items": {
+            "$ref": "#/definitions/functionParameter"
+          }
+        }
+      },
+      "required": ["name", "parameters"]
+    },
+    "functionParameter": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Function name"
+        },
+        "type": {
+          "type": "string",
+          "description": "Function type"
+        },
+        "required": {
+          "type": "boolean",
+          "description": "Is function required"
+        },
+        "description": {
+          "type": "string",
+          "description": "Function descriptions"
+        },
+        "enum": {
+          "type": "array",
+          "description": "Function parameters",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["name", "type"]
     },
     "functionCall": {
       "properties": {
@@ -97,10 +138,7 @@
           "description": "Function call arguments(serialized in JSON)"
         }
       },
-      "required": [
-        "name",
-        "arguments"
-      ]
+      "required": ["name", "arguments"]
     },
     "parameter": {
       "additionalProperties ": false,
@@ -111,18 +149,11 @@
           "description": "Name of parameter"
         },
         "value": {
-          "type": [
-            "string",
-            "number",
-            "boolean"
-          ],
+          "type": ["string", "number", "boolean"],
           "description": "Value of this parameter"
         }
       },
-      "required": [
-        "name",
-        "value"
-      ]
+      "required": ["name", "value"]
     }
   }
 }

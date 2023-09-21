@@ -10,15 +10,30 @@
     {
       "role": "assistant",
       "function_call": {
-				"name": "get_weather",
-				"arguments": "{\n\"city\": \"Beijing\",\n\"time\": \"today\"\n}"
-			}
+        "name": "get_weather",
+        "arguments": "{\n\"city\": \"Beijing\",\n\"time\": \"today\"\n}"
+      }
     },
     {
-			"role": "function",
-			"name": "get_weather",
-			"content": "{\"weather\": \"sunny, 25C\"}"
-		}
+      "role": "function",
+      "name": "get_weather",
+      "content": "{\"weather\": \"sunny, 25C\"}"
+    }
+  ],
+  "functions": [
+    {
+      "name": "get_weather",
+      "description": "Get the weather today",
+      "parameters": [
+        {
+          "name": "city",
+          "type": "string",
+          "enum": ["Wuhan", "Beijing"],
+          "description": "City name",
+          "required": true
+        }
+      ]
+    }
   ],
   "parameters": [
     {
