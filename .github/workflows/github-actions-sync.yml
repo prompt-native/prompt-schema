@@ -2,14 +2,18 @@ name: Run Tests
 run-name: ${{ github.actor }} running tests 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-      - run: npm i -g ajv-cli
-      - run: cd json-examples && ./run-validation.sh
+    Explore-GitHub-Actions:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "18.x"
+            - run: npm i -g ajv-cli
+            - run: cd json-examples && ./run-validation.sh
+            - name: Install dependencies
+              run: npm run install
+            - name: Run tests
+              run: npm run test
