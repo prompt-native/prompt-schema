@@ -1,16 +1,16 @@
 {
-  "version": "0.2",
-  "engine": "chat-bison",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Write a hello world in js"
-    }
-  ],
-  "parameters": [
-    {
-      "name": "temperature",
-      "value": 0.1
-    }
-  ]
+    "version": "chat@0.2",
+    "engine": "chat-bison",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Write a hello world in js"
+        }
+    ],
+    "parameters": [
+        {
+            "name": "temperature",
+            "value": 0.1
+        }
+    ]
 }

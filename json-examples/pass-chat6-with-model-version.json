@@ -1,17 +1,17 @@
 {
-  "$schema": "../schema/chat-schema.json",
-  "version": "0.2",
-  "engine": "chat-bison",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Write a hello world in js"
-    }
-  ],
-  "parameters": [
-    {
-      "name": "temperature",
-      "value": 0.1
-    }
-  ]
+    "$schema": "../schema/chat-schema.json",
+    "version": "chat@0.2",
+    "engine": "chat-bison",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Write a hello world in js"
+        }
+    ],
+    "parameters": [
+        {
+            "name": "temperature",
+            "value": 0.1
+        }
+    ]
 }

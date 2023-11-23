@@ -1,28 +1,28 @@
 {
-  "$schema": "../schema/chat-schema.json",
-  "version": "0.2",
-  "engine": "chat-bison",
-  "context": "Assume that you are a calculator",
-  "examples": [
-    {
-      "role": "user",
-      "content": "1+1"
-    },
-    {
-      "role": "assistant",
-      "content": "=2"
-    }
-  ],
-  "messages": [
-    {
-      "role": "user",
-      "content": "2*4"
-    }
-  ],
-  "parameters": [
-    {
-      "name": "temperature",
-      "value": 0.1
-    }
-  ]
+    "$schema": "../schema/chat-schema.json",
+    "version": "chat@0.2",
+    "engine": "chat-bison",
+    "context": "Assume that you are a calculator",
+    "examples": [
+        {
+            "role": "user",
+            "content": "1+1"
+        },
+        {
+            "role": "assistant",
+            "content": "=2"
+        }
+    ],
+    "messages": [
+        {
+            "role": "user",
+            "content": "2*4"
+        }
+    ],
+    "parameters": [
+        {
+            "name": "temperature",
+            "value": 0.1
+        }
+    ]
 }

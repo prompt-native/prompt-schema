@@ -1,44 +1,44 @@
 {
-  "$schema": "../schema/chat-schema.json",
-  "version": "0.3",
-  "engine": "chat-bison",
-  "messages": [
-    {
-      "role": "user",
-      "content": "What is the weather today in Beijing?"
-    },
-    {
-      "role": "assistant",
-      "function_call": {
-        "name": "get_weather",
-        "arguments": "{\n\"city\": \"Beijing\",\n\"time\": \"today\"\n}"
-      }
-    },
-    {
-      "role": "function",
-      "name": "get_weather",
-      "content": "{\"weather\": \"sunny, 25C\"}"
-    }
-  ],
-  "functions": [
-    {
-      "name": "get_weather",
-      "description": "Get the weather today",
-      "parameters": [
+    "$schema": "../schema/chat-schema.json",
+    "version": "chat@0.3",
+    "engine": "chat-bison",
+    "messages": [
         {
-          "name": "city",
-          "type": "string",
-          "enums": ["Wuhan", "Beijing"],
-          "description": "City name",
-          "required": true
+            "role": "user",
+            "content": "What is the weather today in Beijing?"
+        },
+        {
+            "role": "assistant",
+            "function_call": {
+                "name": "get_weather",
+                "arguments": "{\n\"city\": \"Beijing\",\n\"time\": \"today\"\n}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_weather",
+            "content": "{\"weather\": \"sunny, 25C\"}"
         }
-      ]
-    }
-  ],
-  "parameters": [
-    {
-      "name": "temperature",
-      "value": 0.1
-    }
-  ]
+    ],
+    "functions": [
+        {
+            "name": "get_weather",
+            "description": "Get the weather today",
+            "parameters": [
+                {
+                    "name": "city",
+                    "type": "string",
+                    "enums": ["Wuhan", "Beijing"],
+                    "description": "City name",
+                    "required": true
+                }
+            ]
+        }
+    ],
+    "parameters": [
+        {
+            "name": "temperature",
+            "value": 0.1
+        }
+    ]
 }
