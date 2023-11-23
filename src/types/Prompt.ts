@@ -43,6 +43,17 @@ export class CompletionPrompt extends Prompt {
         super(version, engine, parameters);
         this.prompt = prompt;
     }
+
+    static from(parsedData: any): CompletionPrompt {
+        const version = parsedData.version;
+        const engine = parsedData.engine;
+        const prompt = parsedData.prompt;
+        const parameters = parsedData.parameters
+            ? parsedData.parameters.map((p: any) => new Parameter(p.name, p.value))
+            : undefined;
+
+        return new CompletionPrompt(version, engine, prompt, parameters);
+    }
 }
 
 export class ChatPrompt extends Prompt {
@@ -65,5 +76,29 @@ export class ChatPrompt extends Prompt {
         this.context = context;
         this.examples = examples;
         this.functions = functions;
+    }
+
+    static from(parsedData: any): ChatPrompt {
+        const version = parsedData.version;
+        const engine = parsedData.engine;
+        const parameters = parsedData.parameters
+            ? parsedData.parameters.map((p: any) => new Parameter(p.name, p.value))
+            : undefined;
+        const context = parsedData.context;
+        const examples = parsedData.examples
+            ? parsedData.examples.map(
+                  (e: any) => new Message(e.role, e.name, e.content, e.functionCall)
+              )
+            : undefined;
+        const messages = parsedData.messages.map(
+            (m: any) => new Message(m.role, m.name, m.content, m.functionCall)
+        );
+        const functions = parsedData.functions
+            ? parsedData.functions.map(
+                  (f: any) => new Function(f.name, f.description, f.parameters)
+              )
+            : undefined;
+
+        return new ChatPrompt(version, engine, messages, parameters, context, examples, functions);
     }
 }

@@ -8,10 +8,10 @@ export function parsePrompt(text: string): CompletionPrompt | ChatPrompt {
         if (!version) throw new Error("Unable to get type of data");
         if (version.startsWith("chat@")) {
             validateChatSchema(data);
-            return data as ChatPrompt;
+            return ChatPrompt.from(data);
         } else if (version.startsWith("completion@")) {
             validateCompletionSchema(data);
-            return data as CompletionPrompt;
+            return CompletionPrompt.from(data);
         } else throw new Error(`Unsupported type:${version} detected`);
     } catch (err) {
         throw new Error("Failed to parse json");
