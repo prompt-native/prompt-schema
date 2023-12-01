@@ -3,26 +3,32 @@ import { parsePrompt } from "./Parser";
 
 describe("parse prompts that is not a json file", () => {
     test("should throw error if is empty", () => {
-        expect(() => parsePrompt("")).toThrow();
+        expect(() => parsePrompt("")).toThrow("Failed to parse json");
     });
 
     test("should throw error if is not json", () => {
-        expect(() => parsePrompt("abc")).toThrow();
-        expect(() => parsePrompt("[[[")).toThrow();
+        expect(() => parsePrompt("abc")).toThrow("Failed to parse json");
+        expect(() => parsePrompt("[[[")).toThrow("Failed to parse json");
     });
 
     test("should throw error if json is invalid", () => {
-        expect(() => parsePrompt("{abc}")).toThrow();
+        expect(() => parsePrompt("{abc}")).toThrow("Failed to parse json");
     });
 });
 
 describe("parse prompts that it not valid", () => {
     test("should throw error if type is empty", () => {
-        expect(() => parsePrompt("{}")).toThrow();
+        expect(() => parsePrompt("{}")).toThrow("Unable to get type of data");
     });
 
     test("should throw error if type is not supported", () => {
-        expect(() => parsePrompt('{"type":"something"}')).toThrow();
+        expect(() => parsePrompt('{"version":"something"}')).toThrow(
+            "Unsupported type:something detected"
+        );
+    });
+
+    test("should throw error if json validation failed", () => {
+        expect(() => parsePrompt('{"version":"chat@0.1"}')).toThrow("Json validate failed");
     });
 });
 
