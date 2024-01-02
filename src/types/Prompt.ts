@@ -4,6 +4,12 @@ export class Parameter {
 
 export class FunctionCall {
     constructor(public name: string, public functionArguments: any) {}
+
+    static from(parsedData: any): FunctionCall {
+        const name = parsedData.name;
+        const functionArguments = parsedData.arguments && JSON.parse(parsedData.arguments);
+        return new FunctionCall(name, functionArguments);
+    }
 }
 
 export class FunctionParameter {
@@ -87,11 +93,23 @@ export class ChatPrompt extends Prompt {
         const context = parsedData.context;
         const examples = parsedData.examples
             ? parsedData.examples.map(
-                  (e: any) => new Message(e.role, e.name, e.content, e.functionCall)
+                  (e: any) =>
+                      new Message(
+                          e.role,
+                          e.name,
+                          e.content,
+                          e.function_call && FunctionCall.from(e.function_call)
+                      )
               )
             : undefined;
         const messages = parsedData.messages.map(
-            (m: any) => new Message(m.role, m.name, m.content, m.functionCall)
+            (m: any) =>
+                new Message(
+                    m.role,
+                    m.name,
+                    m.content,
+                    m.function_call && FunctionCall.from(m.function_call)
+                )
         );
         const functions = parsedData.functions
             ? parsedData.functions.map(
