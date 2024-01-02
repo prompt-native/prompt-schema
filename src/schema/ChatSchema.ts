@@ -43,6 +43,13 @@ export const CHAT_SCHEMA = {
                 $ref: "#/definitions/function",
             },
         },
+        function_choices: {
+            type: "array",
+            description: "Functions names that forces the model to call",
+            items: {
+                type: "string",
+            },
+        },
         parameters: {
             type: "array",
             items: {
@@ -68,8 +75,11 @@ export const CHAT_SCHEMA = {
                     type: "string",
                     description: "The message content",
                 },
-                function_call: {
-                    $ref: "#/definitions/functionCall",
+                function_calls: {
+                    type: "array",
+                    items: {
+                        $ref: "#/definitions/functionCall",
+                    },
                 },
             },
             oneOf: [
@@ -77,7 +87,7 @@ export const CHAT_SCHEMA = {
                     required: ["role", "content"],
                 },
                 {
-                    required: ["role", "function_call"],
+                    required: ["role", "function_calls"],
                 },
             ],
         },

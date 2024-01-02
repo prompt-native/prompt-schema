@@ -3,12 +3,16 @@ export class Parameter {
 }
 
 export class FunctionCall {
-    constructor(public name: string, public functionArguments: any) {}
+    public name: string;
+    public arguments: string;
+    constructor(name: string, args: string) {
+        this.name = name;
+        this.arguments = args;
+    }
 
     static from(parsedData: any): FunctionCall {
-        const name = parsedData.name;
-        const functionArguments = parsedData.arguments && JSON.parse(parsedData.arguments);
-        return new FunctionCall(name, functionArguments);
+        parsedData.arguments && JSON.parse(parsedData.arguments);
+        return new FunctionCall(parsedData.name, parsedData.arguments);
     }
 }
 
@@ -22,6 +26,10 @@ export class FunctionParameter {
     ) {}
 }
 
+/**
+ * see: https://cookbook.openai.com/examples/how_to_call_functions_with_chat_models
+ *      https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#functioncall-deprecated
+ */
 export class Function {
     constructor(
         public name: string,
@@ -35,7 +43,7 @@ export class Message {
         public role: string,
         public name?: string,
         public content?: string,
-        public functionCall?: FunctionCall
+        public function_calls?: FunctionCall[]
     ) {}
 }
 
@@ -67,6 +75,7 @@ export class ChatPrompt extends Prompt {
     examples?: Message[];
     messages: Message[];
     functions?: Function[];
+    function_choices?: string[];
 
     constructor(
         version: string,
@@ -75,13 +84,15 @@ export class ChatPrompt extends Prompt {
         parameters?: Parameter[],
         context?: string,
         examples?: Message[],
-        functions?: Function[]
+        functions?: Function[],
+        function_choices?: string[]
     ) {
         super(version, engine, parameters);
         this.messages = messages;
         this.context = context;
         this.examples = examples;
         this.functions = functions;
+        this.function_choices = function_choices;
     }
 
     static from(parsedData: any): ChatPrompt {
@@ -98,7 +109,8 @@ export class ChatPrompt extends Prompt {
                           e.role,
                           e.name,
                           e.content,
-                          e.function_call && FunctionCall.from(e.function_call)
+                          e.function_calls &&
+                              e.function_calls.map((call: any) => FunctionCall.from(call))
                       )
               )
             : undefined;
@@ -108,7 +120,7 @@ export class ChatPrompt extends Prompt {
                     m.role,
                     m.name,
                     m.content,
-                    m.function_call && FunctionCall.from(m.function_call)
+                    m.function_calls && m.function_calls.map((call: any) => FunctionCall.from(call))
                 )
         );
         const functions = parsedData.functions
@@ -116,7 +128,16 @@ export class ChatPrompt extends Prompt {
                   (f: any) => new Function(f.name, f.description, f.parameters)
               )
             : undefined;
-
-        return new ChatPrompt(version, engine, messages, parameters, context, examples, functions);
+        const function_choices = parsedData.function_choices;
+        return new ChatPrompt(
+            version,
+            engine,
+            messages,
+            parameters,
+            context,
+            examples,
+            functions,
+            function_choices
+        );
     }
 }

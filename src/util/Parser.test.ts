@@ -80,7 +80,7 @@ describe("parse prompts that it valid", () => {
 describe("parse prompts that has complex structure", () => {
     test("should return chat prompt if it has function", () => {
         const prompt = parsePrompt(
-            `{"$schema":"../schema/chat-schema.json","version":"chat@0.3","engine":"gpt-3.5-turbo","messages":[{"role":"user","content":"What is the weather today in Beijing?"},{"role":"assistant","function_call":{"name":"get_weather","arguments":"{\\n\\"city\\": \\"Beijing\\",\\n\\"time\\": \\"today\\"\\n}"}},{"role":"function","name":"get_weather","content":"{\\"weather\\": \\"sunny, 25C\\"}"}],"functions":[{"name":"get_weather","description":"Get the weather today","parameters":[{"name":"city","type":"string","enums":["Wuhan","Beijing"],"description":"City name","required":true}]}],"parameters":[{"name":"temperature","value":0.1}]}`
+            `{"$schema":"../schema/chat-schema.json","version":"chat@0.3","engine":"gpt-3.5-turbo","messages":[{"role":"user","content":"What is the weather today in Beijing?"},{"role":"assistant","function_calls":[{"name":"get_weather","arguments":"{\\"city\\":\\"Beijing\\",\\"time\\":\\"today\\"}"}]},{"role":"function","name":"get_weather","content":"{\\"weather\\": \\"sunny, 25C\\"}"}],"functions":[{"name":"get_weather","description":"Get the weather today","parameters":[{"name":"city","type":"string","enums":["Wuhan","Beijing"],"description":"City name","required":true}]}],"parameters":[{"name":"temperature","value":0.1}]}`
         );
 
         expect(prompt).not.toBe(null);
@@ -98,18 +98,17 @@ describe("parse prompts that has complex structure", () => {
         expect(chatPrompt.messages[0].role).toBe("user");
         expect(chatPrompt.messages[0].name).toBeUndefined();
         expect(chatPrompt.messages[0].content).toBe("What is the weather today in Beijing?");
-        expect(chatPrompt.messages[0].functionCall).toBeUndefined();
+        expect(chatPrompt.messages[0].function_calls).toBeUndefined();
         expect(chatPrompt.messages[1].role).toBe("assistant");
         expect(chatPrompt.messages[1].name).toBeUndefined();
         expect(chatPrompt.messages[1].content).toBeUndefined();
-        expect(chatPrompt.messages[1].functionCall!.name).toBe("get_weather");
-        expect(chatPrompt.messages[1].functionCall!.functionArguments).toStrictEqual({
-            city: "Beijing",
-            time: "today",
-        });
+        expect(chatPrompt.messages[1].function_calls![0].name).toBe("get_weather");
+        expect(chatPrompt.messages[1].function_calls![0].arguments).toStrictEqual(
+            '{"city":"Beijing","time":"today"}'
+        );
         expect(chatPrompt.messages[2].role).toBe("function");
         expect(chatPrompt.messages[2].name).toBe("get_weather");
         expect(chatPrompt.messages[2].content).toBe('{"weather": "sunny, 25C"}');
-        expect(chatPrompt.messages[2].functionCall).toBeUndefined();
+        expect(chatPrompt.messages[2].function_calls).toBeUndefined();
     });
 });
